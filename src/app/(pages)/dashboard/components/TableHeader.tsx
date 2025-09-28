@@ -1,4 +1,3 @@
-
 import { DateRangePicker } from '@/components/organism/dateRangePicker/DateRangePicker';
 import type { DateRange } from '@/components/organism/dateRangePicker/interface/interface';
 import { ChevronDown } from 'lucide-react';
@@ -15,18 +14,21 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
   onDateRangeChange
 }) => {
   return (
-    <div className="p-6   ">
+    <div className="p-6">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-semibold text-gray-900">Your Timesheets</h1>
       </div>
-      
-      <div className="flex gap-4">
-        <DateRangePicker onDateRangeChange={onDateRangeChange} />
-        <div className="relative">
+
+      <div className="flex flex-col sm:flex-row gap-4">
+
+        <div className="w-full sm:w-auto">
+          <DateRangePicker onDateRangeChange={onDateRangeChange} />
+        </div>
+        <div className="relative w-full sm:w-auto">
           <select
             value={statusFilter}
             onChange={(e) => onStatusFilterChange(e.target.value)}
-            className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-10 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-10 w-full sm:w-auto text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="all">Status</option>
             <option value="completed">Completed</option>

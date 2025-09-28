@@ -6,13 +6,17 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit, onDelete }) =>
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   return (
-    <div className="flex items-center justify-between py-[10px] px-3 mb-[10px] border rounded-lg border-gray-100 last:border-b-0">
-      <div className="flex-1">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-[10px] px-3 mb-[10px] border rounded-lg border-gray-100 last:border-b-0">
+      <div className="flex-1 mb-2 sm:mb-0">
         <div className="text-gray-900 font-medium">{task.title}</div>
       </div>
-      <div className="flex items-center space-x-3">
+
+
+      <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:space-x-3 justify-between sm:justify-end w-full sm:w-auto">
         <span className="text-sm text-gray-500">{task.hours} hrs</span>
-        <span className="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded">{task.project}</span>
+        <span className="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded">
+          {task.project}
+        </span>
         <div className="relative">
           <button
             onClick={() => setShowMenu(!showMenu)}
@@ -21,7 +25,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit, onDelete }) =>
             <MoreHorizontal className="w-4 h-4 text-gray-400" />
           </button>
           {showMenu && (
-            <div className="absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10">
+            <div className="absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10 w-32">
               <button
                 onClick={() => {
                   onEdit(task);
